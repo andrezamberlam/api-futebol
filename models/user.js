@@ -11,19 +11,32 @@ const userSchema = new Schema({
 });
 const User = mongoose.model('User', userSchema);
 
-/* //PODE SER DESCARTADO?
-const getUserDB = userId => {
-  return User.findById(userId)
-    .then(user => { return { ...user._doc }; })
-    .catch(err => { throw err; });
+
+const getUserDB = async userId => {
+  try {
+    let user = await User.findById(userId);
+    return { ...user._doc };
+  } catch (error) {
+    throw error;
+  }
+  // return User.findById(userId)
+  //   .then(user => { return { ...user._doc }; })
+  //   .catch(err => { throw err; });
 };
 
-const getUsersDB = userIds => {
+const getUsersDB = async userIds => {
+  try {
+    let users = await User.find({ _id: { $in: userIds } });
+    return users.map(user => { return { ...user._doc }; });
+  } catch (error) {
+    throw error;
+  }
+
   return User.find({ _id: { $in: userIds } })
     .then(users => { return users.map(user => { return { ...user._doc }; }) })
     .catch(err => { throw err; });
 };
-*/
+
 module.exports = {
   User,
   userSchema
