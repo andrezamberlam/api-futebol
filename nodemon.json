@@ -1,0 +1,7 @@
+{
+  "env": {
+    "MONGO_USER": "usuario",
+    "MONGO_PASSWORD": "senha",
+    "MONGO_DB": "marcar-futebol-dev"
+  }
+}
