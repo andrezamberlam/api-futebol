@@ -6,4 +6,4 @@ como usar
 - baixar repo
 - npm install
 - instalar mongoDB
-npm run start/debug
+- npm run start/debug
