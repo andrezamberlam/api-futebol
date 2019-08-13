@@ -16,12 +16,8 @@ const mutation = {
         switch (inputGame.mutationType) {
           case enums.mutationType.ADD:
             return addGame(inputGame)
-              .then(result => {
-                return result;
-              })
-              .catch(err => {
-                return err;
-              });;
+              .then(result => { return result; })
+              .catch(err => { return err; });;
           case enums.mutationType.UPDATE:
             updateGame(inputGame);
             break;
@@ -51,19 +47,25 @@ const mutation = {
   }
 };
 
-let addGame = (gameAdd) => {
+const addGame = async (gameAdd) => {
   console.log(gameAdd.players);
 
   const game = new Game(gameAdd);
   //console.log(game);
-  return game
-    .save()
-    .then(result => {
-      return { ...result._doc };
-    })
-    .catch(err => {
-      return err;
-    });
+  try {
+    const gameDB = await game.save();
+    return { ...gameDB._doc };
+  } catch (err) {
+    throw err;
+  }
+  // return game
+  //   .save()
+  //   .then(result => {
+  //     return { ...result._doc };
+  //   })
+  //   .catch(err => {
+  //     return err;
+  //   });
 };
 
 const updateGame = (gameAdd) => {

@@ -14,10 +14,10 @@ const User = mongoose.model('User', userSchema);
 
 const getUserDB = async userId => {
   try {
-    let user = await User.findById(userId);
+    const user = await User.findById(userId);
     return { ...user._doc };
-  } catch (error) {
-    throw error;
+  } catch (err) {
+    throw err;
   }
   // return User.findById(userId)
   //   .then(user => { return { ...user._doc }; })
@@ -26,10 +26,10 @@ const getUserDB = async userId => {
 
 const getUsersDB = async userIds => {
   try {
-    let users = await User.find({ _id: { $in: userIds } });
+    const users = await User.find({ _id: { $in: userIds } });
     return users.map(user => { return { ...user._doc }; });
-  } catch (error) {
-    throw error;
+  } catch (err) {
+    throw err;
   }
 
   return User.find({ _id: { $in: userIds } })

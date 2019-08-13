@@ -17,8 +17,8 @@ const query = {
       return games.map(game => {
         return { ...game._doc };
       });
-    } catch (error) {
-      throw error;
+    } catch (err) {
+      throw err;
     }
     /* VELHO
     // .populate({
