@@ -1,6 +1,6 @@
 # api-futebol
 
-API feita para responder app e site.
+API REST.
 
 como usar
 - baixar repo
