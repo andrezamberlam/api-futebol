@@ -22,7 +22,6 @@ const mutation = {
           case enums.mutationType.ADD:
             return addUser(inputUser)
               .then(result => {
-                1;
                 return result;
               })
               .catch(err => {
@@ -110,13 +109,6 @@ const addUser = async (userAdd) => {
     const result = await user.save();
 
     return { ...result._doc };
-    // .then(result => {
-    //   return { ...result._doc };
-    // }).catch(err => {
-    //   return err;
-    // });
-
-
 
   } catch (err) {
     throw err;
