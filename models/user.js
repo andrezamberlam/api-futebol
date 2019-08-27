@@ -19,10 +19,8 @@ const getUserDB = async userId => {
   } catch (err) {
     throw err;
   }
-  // return User.findById(userId)
-  //   .then(user => { return { ...user._doc }; })
-  //   .catch(err => { throw err; });
 };
+
 
 const getUsersDB = async userIds => {
   try {
@@ -31,15 +29,12 @@ const getUsersDB = async userIds => {
   } catch (err) {
     throw err;
   }
-
-  return User.find({ _id: { $in: userIds } })
-    .then(users => { return users.map(user => { return { ...user._doc }; }) })
-    .catch(err => { throw err; });
 };
+
 
 module.exports = {
   User,
-  userSchema
-  // getUserDB,
-  // getUsersDB
+  userSchema,
+  getUserDB,
+  getUsersDB
 }

@@ -1,6 +1,7 @@
 const graphql = require('graphql');
 const user = require('./queries/user');
 const game = require('./queries/game');
+const login = require('./queries/login');
 //const game = require('./queries/');
 
 const query = new graphql.GraphQLObjectType({
@@ -8,7 +9,8 @@ const query = new graphql.GraphQLObjectType({
     fields: () => {
         return {
             user: user.query,
-            game: game.query
+            game: game.query,
+            login: login.query
         }
     }
 });

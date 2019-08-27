@@ -13,7 +13,7 @@ const gameSchema = new Schema({
   location: { type: String, required: true },
   createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   players: [{
-    user: { type: Schema.Types.ObjectId, ref: 'User', },
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
     position: { type: Number, required: true }
   }]
 });

@@ -2,8 +2,8 @@ const express = require('express');
 const graphqlHttp = require('express-graphql');
 const graphql = require('graphql');
 const mongoose = require('mongoose');
-const User = require('./models/user');
 const graphqlconfig = require('./graphqlconfig');
+const isAuth = require("./middleware/is-auth");
 
 const app = express();
 app.use(express.json());
@@ -14,6 +14,8 @@ var graphqlSchema = new graphql.GraphQLSchema(
     mutation: graphqlconfig.mutation
   }
 );
+
+app.use(isAuth);
 
 app.use('/graphql',
   graphqlHttp({
